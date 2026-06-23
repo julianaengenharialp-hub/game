@@ -39,7 +39,7 @@ dungeon_questions = [
     {'question': 'Existem árvores vivas crescendo dentro da masmorra? (sim/não)', 'answer': 'não', 'feedback_correct': 'Correto! Poucas plantas sobrevivem na falta de luz solar e solo fértil.', 'feedback_incorrect': 'Não! Este é um ambiente fechado e hostil para a maioria da vida vegetal.'},
     {'question': 'A temperatura geral da masmorra é quente? (sim/não)', 'answer': 'não', 'feedback_correct': 'Exato! Masmorras são geralmente frias, úmidas e com temperaturas constantes.', 'feedback_incorrect': 'Não! O frio é constante e úmido, raramente há calor.'},
     {'question': 'Você pode respirar facilmente na maioria das áreas? (sim/não)', 'answer': 'sim', 'feedback_correct': 'Sim, por enquanto! O ar é denso, mas geralmente respirável em áreas abertas.', 'feedback_incorrect': 'Você está com dificuldades então! O ar é rarefeito em alguns pontos.'},
-    {'question': 'A saída está a apenas alguns passos de distância? (sim/não)', 'answer': 'não', 'feedback_correct': 'Correto! A fuga requer esforço e inteligência. É uma jornada!', 'feedback_incorrect': 'Engano seu! A masmorra é vasta e cheia de perigos.'}
+    {'question': 'A saída está a apenas alguns passos de distância? (sim/não)', 'answer': 'não', 'feedback_correct': 'Correto! A fuga requer effort e inteligência. É uma jornada!', 'feedback_incorrect': 'Engano seu! A masmorra é vasta e cheia de perigos.'}
 ]
 
 # --- PASSO 1: TELA DE INÍCIO (Nome e Personagem) ---
@@ -97,6 +97,77 @@ elif st.session_state.passo == 'masmorra':
                 ('mago', 'adaga', 'esquerda'): ["Com sua adaga mística, você desvia de armadilhas mágicas e encontra uma antiga inscrição com um enigma.", "A adaga do mago brilhou, revelando um caminho que leva a um teste de intelecto."],
                 ('mago', 'adaga', 'direita'): ["A adaga do mago não foi páreo para o golem de pedra. Mas o golem parece interessado em uma charada...", "Sua adaga mágica se quebra ao tentar abrir uma porta proibida, mas o feitiço que te possui o desafia com perguntas."],
                 ('mago', 'adaga', 'meio'): ["Usando sua adaga para canalizar energia, você abre um portal para uma câmara com desafios mentais!", "A adaga mágica serve como chave para um cofre lendário, mas ele exige respostas para ser aberto."],
-                ('mago', 'poção mágica', 'esquerda'): ["Você bebe a poção mágica e se torna intangível, passando pelas paredes para uma sala cheia de charadas!", "A poção mágica reveals um mapa invisível que leva a um teste de inteligência."],
+                ('mago', 'poção mágica', 'esquerda'): ["Você bebe a poção mágica e se torna intangível, passando pelas paredes para uma sala cheia de charadas!", "A poção mágica revela um mapa invisível que leva a um teste de inteligência."],
                 ('mago', 'poção mágica', 'direita'): ["A poção mágica te transforma em um sapo. Um slime gigante te come, mas você ouve uma voz: 'Responda para se libertar!'", "A poção mágica faz você levitar até o teto, onde fica preso para sempre... a menos que responda a três perguntas difíceis."],
-                ('mago', 'poção mágica', 'meio'):
+                ('mago', 'poção mágica', 'meio'): ["A poção mágica abre uma passagem secreta para um jardim encantado, mas para atravessá-lo você deve responder a um oráculo!", "Ao derramar a poção na porta do meio, ela se desintegra, revelando uma série de pergaminhos com perguntas."],
+                ('guerreiro', 'espada', 'esquerda'): ["Com sua espada afiada, você corta as videiras que bloqueiam a porta e encontra um guardião que só responde a perguntas!", "Sua espada lendária repele um bando de lobos famintos, mas a saída está trancada por uma fechadura que exige um código (de perguntas)."],
+                ('guerreiro', 'espada', 'direita'): ["Sua espada se prende na rocha e um ogro te esmaga, mas ele te oferece uma chance de escapar se responder às suas charadas!", "Você tenta derrubar a porta com a espada, mas ela vibra e explode, revelando um espírito que te desafia em um duelo de inteligência."],
+                ('guerreiro', 'espada', 'meio'): ["Com sua espada, você derrota um cavaleiro espectral e reivindica um baú de tesouros, mas ele está selado por um feitiço que exige respostas!", "Sua espada corta um selo mágico na porta, revelando uma sala do tesouro de um antigo rei, protegida por enigmas."],
+                ('guerreiro', 'lança', 'esquerda'): ["Com a lança, você desarma um mecanismo à distância e a porta se abre para uma sala de testes!", "Sua lança é perfeita para alcançar uma alavanca escondida, liberando uma saída secreta, mas um espectro surge com perguntas."],
+                ('guerreiro', 'lança', 'direita'): ["A lança não serve contra os escorpiões giants. Você é picado, mas um ancião aparece e diz que sua vida será poupada se você responder a seus enigmas!", "Você tenta usar a lança para forçar a porta, mas ela ativa uma armadilha de espinhos que te empala, porém uma voz misteriosa oferece uma chance de escapar com perguntas."],
+                ('guerreiro', 'lança', 'meio'): ["Você usa a lança para perfurar um dragão adormecido que guarda um tesouro colossal, mas o dragão te desafia com enigmas antes de ceder!", "A ponta da lança ativa um hieróglifo, revelando um salão do tesouro há muito esquecido, que exige a resolução de charadas."],
+                ('lavrador', 'machado', 'esquerda'): ["Com o machado, você derruba a porta de madeira velha e encontra uma sala com um velho sábio que propõe desafios!", "Seu machado de lavrador é surpreendentemente eficaz para cortar as raízes que bloqueiam o caminho para a liberdade, mas um duende exigente aparece com perguntas."],
+                ('lavrador', 'machado', 'direita'): ["O machado ricocheteia e atinge sua própria cabeça, mas você acorda com uma série de perguntas sobre a masmorra, a única forma de acordar de verdade!", "Você tenta cortar um barril suspeito com o machado, mas ele explode em gás tóxico. Uma figura sombria oferece um antídoto em troca de respostas."],
+                ('lavrador', 'machado', 'meio'): ["Você usa o machado para quebrar um barril, encontrando um mapa para um tesouro escondido, mas o mapa contém enigmas que precisam ser resolvidos!", "O machado é a ferramenta ideal para quebrar uma parede frágil, revelando uma pequena câmara com moedas de ouro, mas para abri-la, você precisa responder a um guardião."],
+                ('lavrador', 'pá', 'esquerda'): ["Com a pá, você escava um túnel sob a porta e rasteja para uma câmara com um quebra-cabeça de terra!", "A pá é a chave para desenterrar uma passagem oculta que leva para fora da masmorra, mas um espírito da terra te desafia com perguntas."],
+                ('lavrador', 'pá', 'direita'): ["Você tenta cavar sob a porta, mas o chão cede e você cai em um abismo sem fim! Uma voz ecoa: 'Sua única esperança são as minhas charadas!'", "A pá não consegue remover as pedras que bloqueiam a porta, mas uma mensagem secreta surge na parede oferecendo uma chance com perguntas."],
+                ('lavrador', 'pá', 'meio'): ["Com a pá, você desenterrar um baú de tesouros enterrado sob a porta do meio, mas ele só abre com a resposta para um enigma antigo!", "A pá do lavrador se revela útil para escavar um local marcado 'X' no chão, onde um tesouro espera, mas um gnome guardião exige respostas."]
+            }
+            
+            chave = (st.session_state.personagem, st.session_state.item, st.session_state.porta)
+            if chave in outcomes_map:
+                st.session_state.resultado_texto = random.choice(outcomes_map[chave])
+                perguntas_jogo = dungeon_questions.copy()
+                random.shuffle(perguntas_jogo)
+                st.session_state.perguntas = perguntas_jogo
+                st.session_state.passo = 'perguntas'
+                st.rerun()
+            else:
+                st.session_state.resultado_texto = "Um erro bizarro acontece e você é teleportado para uma dimensão de gelatina."
+                st.session_state.status_final = 'derrota'
+                st.session_state.passo = 'fim'
+                st.rerun()
+
+# --- PASSO 4: FASE DE PERGUNTAS ---
+elif st.session_state.passo == 'perguntas':
+    st.write(st.session_state.resultado_texto)
+    st.write("---")
+    st.write("### 🧠 Desafio de Inteligência")
+    st.write(f"Você precisa responder corretamente a **2 perguntas** para escapar. Limite de 10 tentativas.")
+    st.write(f"Progresso atual: **{st.session_state.acertos} / 2 acertos** | Tentativa atual: **{st.session_state.idx_pergunta + 1} de 10**")
+    
+    q_atual = st.session_state.perguntas[st.session_state.idx_pergunta]
+    
+    st.info(q_atual['question'])
+    resposta_usuario = st.radio("Sua resposta:", ["sim", "não"], key=f"req_{st.session_state.idx_pergunta}")
+    
+    if st.button("Enviar Resposta"):
+        if resposta_usuario == q_atual['answer']:
+            st.success(q_atual['feedback_correct'])
+            st.session_state.acertos += 1
+        else:
+            st.error(q_atual['feedback_incorrect'])
+            
+        st.session_state.idx_pergunta += 1
+        
+        if st.session_state.acertos >= 2:
+            st.session_state.status_final = 'vitoria'
+            st.session_state.passo = 'fim'
+        elif st.session_state.idx_pergunta >= 10:
+            st.session_state.status_final = 'derrota'
+            st.session_state.passo = 'fim'
+            
+        st.button("Continuar")
+
+# --- PASSO 5: TELA DE FINAL DE JOGO ---
+elif st.session_state.passo == 'fim':
+    if st.session_state.status_final == 'vitoria':
+        st.balloons()
+        st.success(f"🎉 Parabéns, {st.session_state.jogador_nome}! Você respondeu às perguntas corretamente e provou seu intelecto. A masmorra se revela e você encontra a liberdade!")
+    else:
+        st.error(f"💀 Game Over, {st.session_state.jogador_nome}. A masmorra não revelou seus segredos e você está perdido para sempre.")
+        
+    if st.button("Jogar Novamente 🔄"):
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+        st.rerun()
